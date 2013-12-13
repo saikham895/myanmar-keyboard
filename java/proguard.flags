@@ -1,0 +1,8 @@
+-keep class com.mmswdev.mmkeyboard.BinaryDictionary {
+  int mDictLength;
+  <init>(...); 
+}
+
+-keep class com.mmswdev.mmkeyboard.Suggest {
+  <init>(...);
+}
