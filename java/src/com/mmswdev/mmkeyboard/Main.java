@@ -34,7 +34,7 @@ import android.widget.TextView.BufferType;
 
 public class Main extends Activity {
 
-    private final static String MARKET_URI = "market://search?q=pub:\"mmswdev\"";
+    private final static String MARKET_URI = "market://search?q=pub:\"MM%20Software%20Development\"";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

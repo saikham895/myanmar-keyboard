@@ -259,6 +259,7 @@ public class Keyboard {
         public CharSequence label;
         public CharSequence shiftLabel;
         public CharSequence capsLabel;
+        public CharSequence mSkipDigitCheck;
 
         /** Icon to display instead of a label. Icon takes precedence over a label */
         public Drawable icon;
@@ -444,6 +445,8 @@ public class Keyboard {
             capsLabel = a.getText(R.styleable.Keyboard_Key_capsLabel);
             if (capsLabel != null && capsLabel.length() == 0) capsLabel = null;
             text = a.getText(R.styleable.Keyboard_Key_keyOutputText);
+            mSkipDigitCheck = a.getText(R.styleable.Keyboard_Key_skipDigitCheck);
+            if (mSkipDigitCheck != null && mSkipDigitCheck.length() == 0) mSkipDigitCheck = null;
 
             if (codes == null && !TextUtils.isEmpty(label)) {
                 codes = getFromString(label);
@@ -967,11 +970,14 @@ public class Keyboard {
             for (int i = 0; i < popupLen; ++i) {
                 char c = key.popupCharacters.charAt(i);
 
+                if (key.mSkipDigitCheck == null || (key.mSkipDigitCheck != null && key.mSkipDigitCheck == "0")) {
+
                 if (Character.isDigit(c) && mainKeys.contains(c)) continue;  // already present elsewhere
 
                 // Skip extra digit alt keys on 5-row keyboards
                 if ((key.edgeFlags & EDGE_TOP) == 0 && Character.isDigit(c)) continue;
 
+                }
                 newPopup.append(c);
             }
             //Log.i("MMKeyboard", "popup for " + key.label + " '" + key.popupCharacters + "' => '"+ newPopup + "' length " + newPopup.length());

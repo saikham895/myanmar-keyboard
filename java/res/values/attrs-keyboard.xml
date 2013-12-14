@@ -80,6 +80,8 @@
         <attr name="shiftLabel" format="string" />
         <!-- The label to display on the caps-shifted key. -->
         <attr name="capsLabel" format="string" />
+        <!-- Whether to skip digit check for popup characters. Added for some characters in Myanmar Zawgyi -->
+        <attr name="skipDigitCheck" format="string" />
         <!-- The icon to display on the key instead of the label. -->
         <attr name="keyIcon" format="reference" />
         <!-- Mode of the keyboard. If the mode doesn't match the

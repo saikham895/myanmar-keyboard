@@ -101,6 +101,7 @@
             android:keyLabel="တ"
             android:shiftLabel="႒"
             android:capsLabel="တ"
+            android:skipDigitCheck="1"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/alternates_for_w" />
         <Key
@@ -188,6 +189,7 @@
             android:keyLabel="့"
             android:shiftLabel="ံ"
             android:popupKeyboard="@xml/kbd_popup_template"
+            android:skipDigitCheck="1"
             android:popupCharacters="@string/alternates_for_h" />
         <Key
             android:keyLabel="ျ"
@@ -233,6 +235,7 @@
         <Key
             android:keyLabel="ထ"
             android:shiftLabel="ဌ"
+            android:skipDigitCheck="1"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/alternates_for_x" />
         <Key
@@ -248,6 +251,7 @@
         <Key
             android:keyLabel="ဘ"
             android:shiftLabel="ဗ"
+            android:skipDigitCheck="1"
             android:popupKeyboard="@xml/kbd_popup_template"
             android:popupCharacters="@string/alternates_for_b" />
         <Key
