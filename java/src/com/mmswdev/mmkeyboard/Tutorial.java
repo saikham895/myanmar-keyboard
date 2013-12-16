@@ -17,6 +17,7 @@
 package com.mmswdev.mmkeyboard;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -90,6 +91,7 @@ public class Tutorial implements OnTouchListener {
                 (LayoutInflater) context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             textView = (TextView) inflate.inflate(R.layout.bubble_text, null);
+            textView.setTypeface(FontUtil.getTypeface(context, Typeface.DEFAULT));
             textView.setBackgroundDrawable(bubbleBackground);
             textView.setText(text);
             //textView.setText(textResource1);

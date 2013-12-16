@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
@@ -125,9 +126,12 @@ public class SeekBarPreference extends DialogPreference {
     protected void onBindDialogView(View view) {
         mSeek = (SeekBar) view.findViewById(R.id.seekBarPref);
         mMinText = (TextView) view.findViewById(R.id.seekMin);
+        mMinText.setTypeface(FontUtil.getTypeface(getContext(), Typeface.DEFAULT));
         mMaxText = (TextView) view.findViewById(R.id.seekMax);
+        mMaxText.setTypeface(FontUtil.getTypeface(getContext(), Typeface.DEFAULT));
         mValText = (TextView) view.findViewById(R.id.seekVal);
-        
+        mValText.setTypeface(FontUtil.getTypeface(getContext(), Typeface.DEFAULT));
+
         showVal();
         mMinText.setText(formatFloatDisplay(mMin));
         mMaxText.setText(formatFloatDisplay(mMax));

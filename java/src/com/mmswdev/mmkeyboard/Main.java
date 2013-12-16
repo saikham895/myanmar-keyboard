@@ -44,6 +44,7 @@ public class Main extends Activity {
         html += "<p><i>Version: " + getString(R.string.auto_version) + "</i></p>";
         Spanned content = Html.fromHtml(html);
         TextView description = (TextView) findViewById(R.id.main_description);
+        description.setTypeface(FontUtil.getTypeface(getBaseContext(), FontUtil.FontType.ZAWGYI_FONT));
         description.setMovementMethod(LinkMovementMethod.getInstance());
         description.setText(content, BufferType.SPANNABLE);
 

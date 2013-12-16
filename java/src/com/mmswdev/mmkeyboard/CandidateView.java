@@ -104,6 +104,7 @@ public class CandidateView extends View {
         Resources res = context.getResources();
         mPreviewPopup = new PopupWindow(context);
         mPreviewText = (TextView) inflate.inflate(R.layout.candidate_preview, null);
+        mPreviewText.setTypeface(FontUtil.getTypeface(context, Typeface.DEFAULT));
         mPreviewPopup.setWindowLayoutMode(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         mPreviewPopup.setContentView(mPreviewText);
         mPreviewPopup.setBackgroundDrawable(null);
@@ -279,7 +280,7 @@ public class CandidateView extends View {
                 }
                 canvas.translate(-x - wordWidth, 0);
             }
-            paint.setTypeface(Typeface.DEFAULT);
+            paint.setTypeface(FontUtil.getTypeface(getContext(), Typeface.DEFAULT));
             x += wordWidth;
         }
         mService.onAutoCompletionStateChanged(existsAutoCompletion);
@@ -469,6 +470,21 @@ public class CandidateView extends View {
                 mPreviewText.setVisibility(VISIBLE);
             }
         }
+    }
+
+    private CharSequence fixMyE(CharSequence word)
+    {
+        int len = word.length();
+        String newWord = "";
+        for (int i = 0; i < len; ++i) {
+            if (word.charAt(i) == 4145) {
+                newWord.concat(String.valueOf((char) 8203));
+                newWord.concat(String.valueOf(word.charAt(i)));
+            } else {
+                newWord.concat(String.valueOf(word.charAt(i)));
+            }
+        }
+        return newWord;
     }
 
     private void longPressFirstWord() {

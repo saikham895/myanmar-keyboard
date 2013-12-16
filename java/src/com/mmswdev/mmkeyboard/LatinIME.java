@@ -424,6 +424,7 @@ public class LatinIME extends InputMethodService implements
         mLanguageSwitcher.loadLocales(prefs);
         mKeyboardSwitcher = KeyboardSwitcher.getInstance();
         mKeyboardSwitcher.setLanguageSwitcher(mLanguageSwitcher);
+        FontUtil.setLanguageSwitcher(mLanguageSwitcher);
         mSystemLocale = conf.locale.toString();
         mLanguageSwitcher.setSystemLocale(conf.locale);
         String inputLanguage = mLanguageSwitcher.getInputLanguage();

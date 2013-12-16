@@ -25,6 +25,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import com.mmswdev.mmkeyboard.Keyboard.Key;
 
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -156,6 +157,7 @@ public class LatinKeyboardView extends LatinKeyboardBaseView {
             mPreviewPopup = new PopupWindow(context);
             Log.i(TAG, "new mPreviewPopup " + mPreviewPopup + " from " + this);
             mPreviewText = (TextView) inflate.inflate(previewLayout, null);
+            mPreviewText.setTypeface(FontUtil.getTypeface(context, Typeface.DEFAULT));
             mPreviewTextSizeLarge = (int) res.getDimension(R.dimen.key_preview_text_size_large);
             mPreviewPopup.setContentView(mPreviewText);
             mPreviewPopup.setBackgroundDrawable(null);
