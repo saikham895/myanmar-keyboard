@@ -271,7 +271,8 @@ public class CandidateView extends View {
             }
 
             if (canvas != null) {
-                canvas.drawText(suggestion, 0, wordLength, x + wordWidth / 2, y, paint);
+                int toPad = countMyE(suggestion);
+                canvas.drawText(fixMyE(suggestion, toPad), 0, wordLength+toPad, x + wordWidth / 2, y, paint);
                 paint.setColor(mColorOther);
                 canvas.translate(x + wordWidth, 0);
                 // Draw a divider unless it's after the hint
@@ -446,7 +447,7 @@ public class CandidateView extends View {
             } else {
                 CharSequence word = altText != null? altText : mSuggestions.get(wordIndex);
                 mPreviewText.setText(word);
-                mPreviewText.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), 
+                mPreviewText.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
                         MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
                 int wordWidth = (int) (mPaint.measureText(word, 0, word.length()) + X_GAP * 2);
                 final int popupWidth = wordWidth
@@ -472,17 +473,41 @@ public class CandidateView extends View {
         }
     }
 
-    private CharSequence fixMyE(CharSequence word)
+    private int countMyE(CharSequence word)
     {
         int len = word.length();
-        String newWord = "";
+        int toPad = 0;
         for (int i = 0; i < len; ++i) {
             if (word.charAt(i) == 4145) {
-                newWord.concat(String.valueOf((char) 8203));
-                newWord.concat(String.valueOf(word.charAt(i)));
-            } else {
-                newWord.concat(String.valueOf(word.charAt(i)));
+                toPad++;
             }
+            if (i > 0) {
+                if (word.charAt(i - 1) == 4153) {
+                    toPad++;
+                }
+            }
+        }
+        return toPad;
+    }
+
+    //Hacks added for Myanmar language Zawgyi font. These needs to be reviewed for Unicode
+    private char[] fixMyE(CharSequence word, int toPad)
+    {
+        int len = word.length();
+        int pad = 0;
+        char[] newWord = new char[len + toPad];
+        for (int i = 0; i < len; ++i) {
+            if (word.charAt(i) == 4145) {
+                newWord[i + pad] = (char) 8203;
+                pad++;
+            }
+            if (i > 0) {
+                if (word.charAt(i - 1) == 4153) {
+                    newWord[i + pad] = (char) 8203;
+                    pad++;
+                }
+            }
+            newWord[i + pad] = word.charAt(i);
         }
         return newWord;
     }

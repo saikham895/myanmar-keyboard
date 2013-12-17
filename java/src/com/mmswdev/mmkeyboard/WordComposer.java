@@ -96,12 +96,6 @@ public class WordComposer {
         correctCodesCase(codes);
         mCodes.add(codes);
         if (Character.isUpperCase((char) primaryCode)) mCapsCount++;
-        if (primaryCode == 4145){
-            final int lastPos = mTypedWord.length() - 1;
-            mTypedWord.deleteCharAt(lastPos);
-            mTypedWord.append((char) 8203);
-            mTypedWord.append((char) primaryCode);
-        }
     }
 
     /**
