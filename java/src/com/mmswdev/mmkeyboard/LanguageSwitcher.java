@@ -146,6 +146,12 @@ public class LanguageSwitcher {
         return !InputLanguageSelection.NONVOICE_LANGUAGES.contains(lang);
     }
 
+    public boolean allowCapsLock() {
+        String lang = getInputLanguage();
+        if (lang.length() > 2) lang = lang.substring(0, 2);
+        return !InputLanguageSelection.NOCAPSLOCK_LANGUAGES.contains(lang);
+    }
+
     /**
      * Returns the list of enabled language codes.
      */

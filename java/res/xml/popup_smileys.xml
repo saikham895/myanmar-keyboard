@@ -52,8 +52,8 @@
             android:keyOutputText=":-* "
             android:keyEdgeFlags="left" />
         <Key
-            android:keyLabel=":O"
-            android:keyOutputText=":O " />
+            android:keyLabel="_/\\_"
+            android:keyOutputText="_/\\_ " />
         <Key
             android:keyLabel="B-)"
             android:keyOutputText="B-) " />

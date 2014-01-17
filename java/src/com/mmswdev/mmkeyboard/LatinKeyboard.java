@@ -373,6 +373,7 @@ public class LatinKeyboard extends Keyboard {
         key.popupResId = popupResId;
         key.icon = mHintIcon;
         key.iconPreview = null;
+        if (label.length() > 1) key.text = label;
     }
 
     public boolean isF1Key(Key key) {

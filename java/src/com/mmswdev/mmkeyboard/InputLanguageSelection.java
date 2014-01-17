@@ -79,18 +79,24 @@ public class InputLanguageSelection extends PreferenceActivity {
         NONVOICE_LANGUAGES.add("my");
     }
 
+    // Languages which should not have caps lock
+    public static final Set<String> NOCAPSLOCK_LANGUAGES = new HashSet<String>();
+    static {
+        NOCAPSLOCK_LANGUAGES.add("my");
+    }
+
     // Run the GetLanguages.sh script to update the following lists based on
     // the available keyboard resources and dictionaries.
     private static final String[] KBD_LOCALIZATIONS = {
-        "en", "my_ZG"
+        "en", "my_ZB", "my_ZG"
     };
 
     private static final String[] KBD_5_ROW = {
-        "en", "my_ZG"
+        "en", "my_ZB", "my_ZG"
     };
 
     private static final String[] KBD_4_ROW = {
-        "en", "my_ZG"
+        "en", "my_ZB", "my_ZG"
     };
 
     private static String getLocaleName(Locale l) {
@@ -108,6 +114,8 @@ public class InputLanguageSelection extends PreferenceActivity {
             return "Slovenčina (QWERTY)";
         } else if (lang.equals("ru") && country.equals("PH")) {
             return "Русский (Phonetic)";
+        } else if (lang.equals("my") && country.equals("ZB")) {
+            return "MM Zawgyi - Big";
         } else if (lang.equals("my") && country.equals("ZG")) {
             return "MM Zawgyi";
         } else if (lang.equals("my") && country.equals("UC")) {

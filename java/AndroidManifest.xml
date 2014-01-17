@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.mmswdev.mmkeyboard" android:versionName="v0.05" android:versionCode="0005">
+        package="com.mmswdev.mmkeyboard" android:versionName="v0.06a" android:versionCode="0006">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />

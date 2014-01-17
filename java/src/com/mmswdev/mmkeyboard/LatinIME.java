@@ -2276,7 +2276,7 @@ public class LatinIME extends InputMethodService implements
 
     private void commitMultitouchShift() {
         if (mKeyboardSwitcher.isAlphabetMode()) {
-            int newState = nextShiftState(mSavedShiftState, true);
+            int newState = nextShiftState(mSavedShiftState, mLanguageSwitcher.allowCapsLock());
             handleShiftInternal(true, newState);
         } else {
             // do nothing, keyboard is already flipped
@@ -2331,7 +2331,7 @@ public class LatinIME extends InputMethodService implements
             if (forceState) {
                 switcher.setShiftState(newState);
             } else {
-                switcher.setShiftState(nextShiftState(getShiftState(), true));
+                switcher.setShiftState(nextShiftState(getShiftState(), mLanguageSwitcher.allowCapsLock()));
             }
         } else {
             switcher.toggleShift();

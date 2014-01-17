@@ -40,7 +40,7 @@ public class FontUtil {
         String lang = l.getLanguage();
         String country = l.getCountry();
         try {
-            if (lang.equals("my") && country.equals("ZG")) {
+            if (lang.equals("my") && (country.equals("ZG") || country.equals("ZB"))) {
                 if (defaultTypeface == Typeface.DEFAULT ||
                     defaultTypeface == Typeface.DEFAULT_BOLD ||
                     defaultTypeface == Typeface.MONOSPACE ||
@@ -114,7 +114,7 @@ public class FontUtil {
         Locale l = mLanguageSwitcher.getInputLocale();
         String lang = l.getLanguage();
         String country = l.getCountry();
-        if (lang.equals("my") && country.equals("ZG")) {
+        if (lang.equals("my") && (country.equals("ZG") || country.equals("ZB"))) {
             if (defaultTypeface == Typeface.DEFAULT ||
                     defaultTypeface == Typeface.DEFAULT_BOLD ||
                     defaultTypeface == Typeface.MONOSPACE ||
