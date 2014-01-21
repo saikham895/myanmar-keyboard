@@ -15,7 +15,7 @@ public class FontUtil {
 
         ZAWGYI_FONT {
             public String toString() {
-                return "fonts/ZawgyiOne.ttf";
+                return "fonts/ZawgyiOne.otf";
             }
         },
 

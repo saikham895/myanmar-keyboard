@@ -91,7 +91,12 @@ public class LanguageSwitcher {
     }
 
     private void loadDefaults() {
-        mDefaultInputLocale = mIme.getResources().getConfiguration().locale;
+//        mDefaultInputLocale = mIme.getResources().getConfiguration().locale;
+        //adding Zawgyi big keyboard as default keyboard
+        final String lang = "my_ZB";
+        final Locale mLocale = new Locale(lang.substring(0, 2),
+                lang.length() > 4 ? lang.substring(3, 5) : "");
+        mDefaultInputLocale = mLocale;
         String country = mDefaultInputLocale.getCountry();
         mDefaultInputLanguage = mDefaultInputLocale.getLanguage() +
                 (TextUtils.isEmpty(country) ? "" : "_" + country);
