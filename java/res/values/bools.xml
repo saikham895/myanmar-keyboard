@@ -18,6 +18,8 @@
 */
 -->
 <resources>
+    <!-- Whether to use embedded zawgyi font -->
+    <bool name = "default_embedded_font">true</bool>
     <!-- Whether or not auto-correction should be enabled by default -->
     <bool name="enable_autocorrect">false</bool>
     <bool name="default_auto_cap">true</bool>

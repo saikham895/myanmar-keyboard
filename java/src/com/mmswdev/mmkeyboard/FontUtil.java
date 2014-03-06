@@ -40,6 +40,7 @@ public class FontUtil {
         String lang = l.getLanguage();
         String country = l.getCountry();
         try {
+//            if (LatinIME.sKeyboardSettings.mEmbeddedFont && lang.equals("my") && (country.equals("ZG") || country.equals("ZB"))) {
             if (lang.equals("my") && (country.equals("ZG") || country.equals("ZB"))) {
                 if (defaultTypeface == Typeface.DEFAULT ||
                     defaultTypeface == Typeface.DEFAULT_BOLD ||
@@ -58,6 +59,7 @@ public class FontUtil {
                     }
                     typeFace = mZawgyiFont;
                 }
+//            } else if (LatinIME.sKeyboardSettings.mEmbeddedFont && lang.equals("my") && country.equals("UC")) {
             } else if (lang.equals("my") && country.equals("UC")) {
                 typeFace = defaultTypeface;
             } else {
@@ -111,24 +113,7 @@ public class FontUtil {
 
     public static double getScale(Typeface defaultTypeface) {
         double scale = 1;
-        Locale l = mLanguageSwitcher.getInputLocale();
-        String lang = l.getLanguage();
-        String country = l.getCountry();
-        if (lang.equals("my") && (country.equals("ZG") || country.equals("ZB"))) {
-            if (defaultTypeface == Typeface.DEFAULT ||
-                    defaultTypeface == Typeface.DEFAULT_BOLD ||
-                    defaultTypeface == Typeface.MONOSPACE ||
-                    defaultTypeface == Typeface.SANS_SERIF ||
-                    defaultTypeface == Typeface.SERIF) {
-                        scale = 0.8;
-            } else {
-                scale = 0.8;
-            }
-        } else if (lang.equals("my") && country.equals("UC")) {
-            scale = 1;
-        } else {
-            scale = 1;
-        }
+        scale = LatinIME.sKeyboardSettings.mFontSizeKey * 0.01;
         return scale;
     }
 

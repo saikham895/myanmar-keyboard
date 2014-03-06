@@ -27,6 +27,10 @@
 
     <!-- Various configuration titles -->
     <string name="title_keyboard_view_settings">Keyboard view settings</string>
+    <string name="title_font_size_key">Font size on the key</string>
+    <string name="title_embedded_font">Use Zawgyi embedded font</string>
+    <string name="summary_embedded_font_true">Embedded Zawgyi font is used</string>
+    <string name="summary_embedded_font_false">System font is used</string>
     <string name="title_keyboard_height_portrait">Keyboard height, portrait</string>
     <string name="title_keyboard_height_landscape">Keyboard height, landscape</string>
     <string name="title_key_layout_options">Key layout options</string>

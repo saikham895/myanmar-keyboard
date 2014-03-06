@@ -83,6 +83,9 @@ public final class GlobalKeyboardSettings {
     public String editorFieldName; 
     public int editorFieldId; 
     public int editorInputType;
+    // Read by FontUtils
+    public int mFontSizeKey = 80;
+    public boolean mEmbeddedFont = true;
 
     /* Updated by KeyboardSwitcher */
     //

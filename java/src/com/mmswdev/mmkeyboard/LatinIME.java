@@ -145,6 +145,8 @@ public class LatinIME extends InputMethodService implements
     static final String PREF_CONNECTBOT_TAB_HACK = "connectbot_tab_hack";
     static final String PREF_FULL_KEYBOARD_IN_PORTRAIT = "full_keyboard_in_portrait";
     static final String PREF_SUGGESTIONS_IN_LANDSCAPE = "suggestions_in_landscape";
+    static final String PREF_FONT_SIZE_KEY = "settings_font_size_key";
+    static final String PREF_EMBEDDED_FONT = "settings_embedded_font";
     static final String PREF_HEIGHT_PORTRAIT = "settings_height_portrait";
     static final String PREF_HEIGHT_LANDSCAPE = "settings_height_landscape";
     static final String PREF_HINT_MODE = "pref_hint_mode";
@@ -256,8 +258,8 @@ public class LatinIME extends InputMethodService implements
     private String mVolUpAction;
     private String mVolDownAction;
 
-    public static final GlobalKeyboardSettings sKeyboardSettings = new GlobalKeyboardSettings(); 
-    
+    public static final GlobalKeyboardSettings sKeyboardSettings = new GlobalKeyboardSettings();
+
     private int mHeightPortrait;
     private int mHeightLandscape;
     private int mNumKeyboardModes = 3;
@@ -444,6 +446,9 @@ public class LatinIME extends InputMethodService implements
                 res.getBoolean(R.bool.default_keyboard_notification));
         mSuggestionsInLandscape = prefs.getBoolean(PREF_SUGGESTIONS_IN_LANDSCAPE,
                 res.getBoolean(R.bool.default_suggestions_in_landscape));
+        LatinIME.sKeyboardSettings.mFontSizeKey = getFontSize(prefs, PREF_FONT_SIZE_KEY, res.getString(R.string.default_font_size_key));
+        LatinIME.sKeyboardSettings.mEmbeddedFont = prefs.getBoolean(PREF_EMBEDDED_FONT,
+                res.getBoolean(R.bool.default_embedded_font));
         mHeightPortrait = getHeight(prefs, PREF_HEIGHT_PORTRAIT, res.getString(R.string.default_height_portrait));
         mHeightLandscape = getHeight(prefs, PREF_HEIGHT_LANDSCAPE, res.getString(R.string.default_height_landscape));
         LatinIME.sKeyboardSettings.hintMode = Integer.parseInt(prefs.getString(PREF_HINT_MODE, res.getString(R.string.default_hint_mode)));
@@ -3352,6 +3357,12 @@ public class LatinIME extends InputMethodService implements
             mSuggestionForceOff = false;
             mSuggestionForceOn = false;
             needReload = true;
+        } else if (PREF_FONT_SIZE_KEY.equals(key)) {
+            LatinIME.sKeyboardSettings.mFontSizeKey = getFontSize(sharedPreferences,
+                    PREF_FONT_SIZE_KEY, res.getString(R.string.default_font_size_key));
+        } else if (PREF_EMBEDDED_FONT.equals(key)) {
+            LatinIME.sKeyboardSettings.mEmbeddedFont = sharedPreferences.getBoolean(PREF_EMBEDDED_FONT,
+                    res.getBoolean(R.bool.default_embedded_font));
         } else if (PREF_HEIGHT_PORTRAIT.equals(key)) {
             mHeightPortrait = getHeight(sharedPreferences,
                     PREF_HEIGHT_PORTRAIT, res.getString(R.string.default_height_portrait));
@@ -3981,6 +3992,15 @@ public class LatinIME extends InputMethodService implements
             val = 15;
         if (val > 75)
             val = 75;
+        return val;
+    }
+
+    static int getFontSize(SharedPreferences prefs, String prefName, String defVal) {
+        int val = getPrefInt(prefs, prefName, defVal);
+        if (val < 20)
+            val = 20;
+        if (val > 150)
+            val = 150;
         return val;
     }
 }

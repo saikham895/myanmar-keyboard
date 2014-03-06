@@ -23,7 +23,27 @@
             android:title="@string/title_keyboard_view_settings"
             android:key="graphics_settings">
 
-    <com.mmswdev.mmkeyboard.SeekBarPreferenceString
+        <com.mmswdev.mmkeyboard.SeekBarPreferenceString
+            android:defaultValue="@string/default_font_size_key"
+            hk:minValue="20"
+            hk:maxValue="150"
+            hk:step="1"
+            hk:displayFormat="%.0f%%"
+            android:key="settings_font_size_key"
+            android:title="@string/title_font_size_key"
+            android:persistent="true"
+            />
+
+<!--        <CheckBoxPreference
+            android:key="settings_embedded_font"
+            android:title="@string/title_embedded_font"
+            android:persistent="true"
+            android:defaultValue="@bool/default_embedded_font"
+            android:summaryOn="@string/summary_embedded_font_true"
+            android:summaryOff="@string/summary_embedded_font_false"
+            />
+-->
+        <com.mmswdev.mmkeyboard.SeekBarPreferenceString
             android:defaultValue="@string/default_height_portrait"
             hk:minValue="15"
             hk:maxValue="75"
